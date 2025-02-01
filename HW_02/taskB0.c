@@ -39,6 +39,18 @@ uint64_t findMaxBlock(list *head)
     return maxAddress;
 }
 
+void freeList(list* head)
+{
+    list* current = head;
+    list* next = NULL;
+    while (current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    head = NULL;
+}
 
 int main(void)
 {
@@ -75,6 +87,7 @@ int main(void)
     printf("%lu\n", maxAddress);
     uint64_t testMaxAddress = findMaxBlock(head);
     printf("%lu\n", testMaxAddress);
+    freeList(head);
     if (maxAddress == testMaxAddress)
     {
         return 0;

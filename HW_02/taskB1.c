@@ -34,6 +34,19 @@ uint64_t totalMemoryUsage(list *head)
     return totalMemory;
 }
 
+void freeList(list* head)
+{
+    list* current = head;
+    list* next = NULL;
+    while (current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    head = NULL;
+}
+
 
 int main(void)
 {
@@ -61,6 +74,7 @@ int main(void)
     printf("%lu\n", totalMemory);
     uint64_t testTotal = totalMemoryUsage(head);
     printf("%lu\n", testTotal);
+    freeList(head);
     if (totalMemory == testTotal)
     {
         return 0;
