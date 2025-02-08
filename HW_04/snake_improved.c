@@ -1,4 +1,6 @@
-// 1. Для решения предлагается сделать массив кодов управления
+// 1. Добавить возможность управления змейкой клавишами WSAD (вне зависимости от регистра). 
+// Зависимости от регистра в соответствии с таблицей.
+// Для решения предлагается сделать массив кодов управления
 // struct control_buttons default_controls[CONTROLS].
 // CONTROLS – определяем количество элементов массива.
 // В необходимых функциях в цикле необходимо сравнивать с каждым типом управления в цикле
@@ -29,7 +31,7 @@
 
 enum {LEFT=1, UP, RIGHT, DOWN, STOP_GAME=KEY_F(10)};
 enum {MAX_TAIL_SIZE=100, START_TAIL_SIZE=20, MAX_FOOD_SIZE=20,
-      FOOD_EXPIRE_SECONDS=10, CONTROLS=1};
+      FOOD_EXPIRE_SECONDS=10, CONTROLS=3};
 
 
 // Здесь храним коды управления змейкой
@@ -43,7 +45,9 @@ struct control_buttons
 
 struct control_buttons default_controls[CONTROLS] =
 {
-    {KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT}
+    {KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT},
+    {'S', 'W', 'A', 'D'},
+    {'s', 'w', 'a', 'd'}
 };
 
 /*
